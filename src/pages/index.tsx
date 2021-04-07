@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <Box>
       <Header />
-
+      
       <Box
         bgImage='url("/images/background.png")'
         bgPosition='center'
