@@ -1,9 +1,17 @@
 import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react"
+import ReactCountryFlag from 'react-country-flag'
 
-export function Card() {
+interface CardProps {
+  name: string;
+  countryName: string;
+  image: string;
+  countryCode: string;
+}
+
+export function Card({ name, countryName, image, countryCode }: CardProps) {
   return (
     <Box w='256'>
-      <Image src='/images/europe-londres-card.png' alt='Londres' w='100%' />
+      <Image borderTopRadius='4' src={image} alt='Londres' w='100%' h='173' objectFit='cover'/>
       <Flex 
         justify='space-between' 
         align='center' 
@@ -14,11 +22,21 @@ export function Card() {
         borderBottomRadius='4'
       >
         <Flex direction='column'>
-          <Heading as='h3' fontSize='xl' fontWeight='600' mb={3}>Londres</Heading>
-          <Text color='gray.500' fontSize='md' fontWeight='500'>Reino unido</Text>
+          <Heading as='h3' fontSize='xl' fontWeight='600' mb={3}>{name}</Heading>
+          <Text color='gray.500' fontSize='md' fontWeight='500'>{countryName}</Text>
         </Flex>
 
-        <Image src='/images/europe-londres-flag.png' alt='Reino Unido' w='30' h='30' />
+        <ReactCountryFlag
+          style={{
+            fontSize: '2em',
+            lineHeight: '2em',
+            borderRadius: '50%',
+            objectFit: 'cover'
+          }}
+          aria-label={countryName}
+          countryCode={countryCode}
+          svg 
+        />
       </Flex>
     </Box>
   )

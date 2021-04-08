@@ -49,7 +49,7 @@ export function Slide() {
       </SwiperSlide>
 
       <SwiperSlide>
-        <Link href='/continents/europa'>
+        <Link href='/continents/asia'>
           <a>
             <Flex
               w="100%"
@@ -68,7 +68,7 @@ export function Slide() {
                 color="gray.50" 
                 fontWeight="bold"
               >
-                Europa
+                Ásia
               </Heading>
               <Text 
                 fontWeight="bold" 
@@ -76,7 +76,147 @@ export function Slide() {
                 fontSize="2xl"
                 mt="4"
               >
-                O continente mais antigo.
+                O continente mais populoso.
+              </Text>
+            </Flex>
+          </a>
+        </Link>
+      </SwiperSlide>
+
+      <SwiperSlide>
+        <Link href='/continents/africa'>
+          <a>
+            <Flex
+              w="100%"
+              h="100%"
+              align="center"
+              justify="center"
+              direction="column"
+              bgImage='url("/images/europe-slide.png")'
+              bgPosition='center'
+              bgRepeat='no-repeat'
+              bgSize='cover'
+              textAlign='center'
+            >
+              <Heading 
+                fontSize="5xl"
+                color="gray.50" 
+                fontWeight="bold"
+              >
+                África
+              </Heading>
+              <Text 
+                fontWeight="bold" 
+                color="gray.100" 
+                fontSize="2xl"
+                mt="4"
+              >
+                O continente mais colorido.
+              </Text>
+            </Flex>
+          </a>
+        </Link>
+      </SwiperSlide>
+
+      <SwiperSlide>
+        <Link href='/continents/america-do-sul'>
+          <a>
+            <Flex
+              w="100%"
+              h="100%"
+              align="center"
+              justify="center"
+              direction="column"
+              bgImage='url("/images/europe-slide.png")'
+              bgPosition='center'
+              bgRepeat='no-repeat'
+              bgSize='cover'
+              textAlign='center'
+            >
+              <Heading 
+                fontSize="5xl"
+                color="gray.50" 
+                fontWeight="bold"
+              >
+                Ámerica do Sul
+              </Heading>
+              <Text 
+                fontWeight="bold" 
+                color="gray.100" 
+                fontSize="2xl"
+                mt="4"
+              >
+                O melhor continente.
+              </Text>
+            </Flex>
+          </a>
+        </Link>
+      </SwiperSlide>
+
+      <SwiperSlide>
+        <Link href='/continents/america-do-norte'>
+          <a>
+            <Flex
+              w="100%"
+              h="100%"
+              align="center"
+              justify="center"
+              direction="column"
+              bgImage='url("/images/europe-slide.png")'
+              bgPosition='center'
+              bgRepeat='no-repeat'
+              bgSize='cover'
+              textAlign='center'
+            >
+              <Heading 
+                fontSize="5xl"
+                color="gray.50" 
+                fontWeight="bold"
+              >
+                Ámerica do Norte
+              </Heading>
+              <Text 
+                fontWeight="bold" 
+                color="gray.100" 
+                fontSize="2xl"
+                mt="4"
+              >
+                O continente mais tecnológico.
+              </Text>
+            </Flex>
+          </a>
+        </Link>
+      </SwiperSlide>
+
+      <SwiperSlide>
+        <Link href='/continents/oceania'>
+          <a>
+            <Flex
+              w="100%"
+              h="100%"
+              align="center"
+              justify="center"
+              direction="column"
+              bgImage='url("/images/europe-slide.png")'
+              bgPosition='center'
+              bgRepeat='no-repeat'
+              bgSize='cover'
+              textAlign='center'
+            >
+              <Heading 
+                fontSize="5xl"
+                color="gray.50" 
+                fontWeight="bold"
+              >
+                Oceania
+              </Heading>
+              <Text 
+                fontWeight="bold" 
+                color="gray.100" 
+                fontSize="2xl"
+                mt="4"
+              >
+                O continente mais peculiar.
               </Text>
             </Flex>
           </a>

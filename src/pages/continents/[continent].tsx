@@ -1,19 +1,24 @@
 import { Box, Flex, Heading, HStack, Icon, SimpleGrid, Text } from "@chakra-ui/react"
 import {  FiInfo } from 'react-icons/fi'
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next"
 
 import { Header } from "../../components/Header"
 import { Card } from "../../components/Card"
+import { api } from "../../services/api"
 
 type ContinentType = {
+  id: number;
   name: string;
   description: string;
-  amountCountries: number;
-  amountLanguages: number;
+  bannerImage: string;
+  numberOfCountries: number;
+  numberOfLanguages: number;
+  amountMostPopularCities: number;
   mostPopularCities: [{
     cityName: string;
     countryName: string;
     cityImage: string;
-    countryFlagImage: string;
+    countryCode: string;
   }]
 }
 
@@ -27,7 +32,7 @@ export default function Continent({ continent }: ContinentProps) {
       <Header hasBackLink/>
 
       <Box
-        bgImage='url("/images/europe-banner.png")'
+        bgImage={`url(${continent.bannerImage})`}
         bgPosition='center'
         bgRepeat='no-repeat'
         bgSize='cover'
@@ -47,8 +52,9 @@ export default function Continent({ continent }: ContinentProps) {
             color='gray.50'
             position='absolute'
             bottom='60px'
+            textTransform='capitalize'
           >
-            Europa
+            {continent.name}
           </Heading>
         </Box>
       </Box>
@@ -60,23 +66,29 @@ export default function Continent({ continent }: ContinentProps) {
         px={10}
       >
         <Flex justify='space-between' align='center' my={20}>
-          <Text maxW='600' fontSize='2xl' lineHeights='9' textAlign='justify' fontWeight='400'>
-            A Europa é, por convenção, um dos seis continentes do mundo. Compreendendo a península ocidental da Eurásia, a Europa geralmente divide-se da Ásia a leste pela divisória de águas dos montes Urais, o rio Ural, o mar Cáspio, o Cáucaso, e o mar Negro a sudeste
+          <Text maxW='600' fontSize='2xl' lineHeight='9' textAlign='justify' fontWeight='400'>
+            {continent.description}
           </Text>
 
           <HStack spacing={10}>
             <Flex direction='column' align='center' px={2}>
-              <Text as='span' fontSize='5xl' color='yellow.500' fontWeight='600'>50</Text>
+              <Text as='span' fontSize='5xl' color='yellow.500' fontWeight='600'>
+                {continent.numberOfCountries}
+              </Text>
               <Text fontSize='2xl' fontWeight='600'>países</Text>
             </Flex>
 
             <Flex direction='column' align='center' px={2}>
-              <Text as='span' fontSize='5xl' color='yellow.500' fontWeight='600'>60</Text>
-              <Text fontSize='2xl' fontWeight='600'>países</Text>
+              <Text as='span' fontSize='5xl' color='yellow.500' fontWeight='600'>
+                {continent.numberOfLanguages}
+              </Text>
+              <Text fontSize='2xl' fontWeight='600'>línguas</Text>
             </Flex>
 
             <Flex direction='column' align='center' px={2}>
-              <Text as='span' fontSize='5xl' color='yellow.500' fontWeight='600'>27</Text>
+              <Text as='span' fontSize='5xl' color='yellow.500' fontWeight='600'>
+                {continent.amountMostPopularCities}
+              </Text>
               <Flex align='center'>
                 <Text fontSize='2xl' fontWeight='600'>
                   cidades +100
@@ -98,14 +110,38 @@ export default function Continent({ continent }: ContinentProps) {
           </Heading>
 
           <SimpleGrid columns={4} spacing={10} my='45px'>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {continent.mostPopularCities.map((city) => (
+              <Card 
+                name={city.cityName}
+                image={city.cityImage}
+                countryName={city.countryName}
+                countryCode={city.countryCode}
+              />
+            ))}
           </SimpleGrid>
         </Box>
       </Box>
     </Box>
   )
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking'
+  }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { continent } = params
+
+  const response = await api.get(`/continents?slug=${continent}`)
+
+  const continentInfos: ContinentType = response.data[0]
+
+  return {
+    props: {
+      continent: continentInfos
+    }
+  }
 }

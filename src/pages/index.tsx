@@ -33,7 +33,7 @@ export default function Home() {
             color='gray.50'
             mb='5'
           >
-            5 Continentes, <Divider as='br' /> infinitas possibilidades.
+            6 Continentes, <Divider as='br' /> infinitas possibilidades.
           </Heading>
           <Text
             maxW='524'
