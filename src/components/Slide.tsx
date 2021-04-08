@@ -57,7 +57,7 @@ export function Slide() {
               align="center"
               justify="center"
               direction="column"
-              bgImage='url("/images/europe-slide.png")'
+              bgImage='url("/images/asia-slide.jpg")'
               bgPosition='center'
               bgRepeat='no-repeat'
               bgSize='cover'
@@ -92,7 +92,7 @@ export function Slide() {
               align="center"
               justify="center"
               direction="column"
-              bgImage='url("/images/europe-slide.png")'
+              bgImage='url("/images/africa-slide.jpg")'
               bgPosition='center'
               bgRepeat='no-repeat'
               bgSize='cover'
@@ -127,7 +127,7 @@ export function Slide() {
               align="center"
               justify="center"
               direction="column"
-              bgImage='url("/images/europe-slide.png")'
+              bgImage='url("/images/america1-slide.jpg")'
               bgPosition='center'
               bgRepeat='no-repeat'
               bgSize='cover'
@@ -162,7 +162,7 @@ export function Slide() {
               align="center"
               justify="center"
               direction="column"
-              bgImage='url("/images/europe-slide.png")'
+              bgImage='url("/images/america2-slide.jpg")'
               bgPosition='center'
               bgRepeat='no-repeat'
               bgSize='cover'
@@ -197,7 +197,7 @@ export function Slide() {
               align="center"
               justify="center"
               direction="column"
-              bgImage='url("/images/europe-slide.png")'
+              bgImage='url("/images/oceania-slide.jpg")'
               bgPosition='center'
               bgRepeat='no-repeat'
               bgSize='cover'
