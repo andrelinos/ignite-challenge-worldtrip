@@ -1,6 +1,6 @@
-import { Box, Flex, Heading, HStack, Icon, SimpleGrid, Text } from "@chakra-ui/react"
+import { Box, Flex, Heading, HStack, Icon, SimpleGrid, Text, Tooltip } from "@chakra-ui/react"
 import {  FiInfo } from 'react-icons/fi'
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next"
+import { GetStaticPaths, GetStaticProps } from "next"
 
 import { Header } from "../../components/Header"
 import { Card } from "../../components/Card"
@@ -93,7 +93,12 @@ export default function Continent({ continent }: ContinentProps) {
                 <Text fontSize='2xl' fontWeight='600'>
                   cidades +100
                 </Text>
-                <Icon as={FiInfo} fontSize="md" opacity='0.5' ml='5px'/>
+
+                <Tooltip label="100 cidades mais visitadas do mundo" bg="gray.600" color="gray.50">
+                  <span>
+                    <Icon as={FiInfo} fontSize="md" opacity='0.5' ml='5px'/>
+                  </span>
+                </Tooltip>
               </Flex>
             </Flex>
           </HStack>
@@ -111,7 +116,8 @@ export default function Continent({ continent }: ContinentProps) {
 
           <SimpleGrid columns={4} spacing={10} my='45px'>
             {continent.mostPopularCities.map((city) => (
-              <Card 
+              <Card
+                key={city.cityName}
                 name={city.cityName}
                 image={city.cityImage}
                 countryName={city.countryName}
