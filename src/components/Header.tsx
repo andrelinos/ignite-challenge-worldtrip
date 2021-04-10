@@ -18,13 +18,13 @@ export function Header({ hasBackLink = false }: HeaderProps) {
       h={isWideVersion ? '100' : '50'} 
       maxW={1240} 
       mx='auto' 
-      px={10} 
+      px={['4', '10']} 
       position='relative'
     >
       {hasBackLink && (
         <Link href='/'>
-          <ChakraLink position='absolute' left='40px'>
-            <Icon as={FiChevronLeft} fontSize="2rem"/>
+          <ChakraLink position='absolute' left={['16px', '40px']}>
+            <Icon as={FiChevronLeft} fontSize={["1rem", "2rem"]}/>
           </ChakraLink>
         </Link>
       )}

@@ -1,10 +1,10 @@
-import { Box, Flex, Heading, HStack, Icon, SimpleGrid, Text, Tooltip } from "@chakra-ui/react"
-import {  FiInfo } from 'react-icons/fi'
+import { Box, Center, Flex, Heading, HStack, Icon, SimpleGrid, Text, Tooltip, useBreakpointValue } from "@chakra-ui/react"
 import { GetStaticPaths, GetStaticProps } from "next"
 
 import { Header } from "../../components/Header"
 import { Card } from "../../components/Card"
 import { api } from "../../services/api"
+import { Info } from "../../components/Info"
 
 type ContinentType = {
   id: number;
@@ -27,6 +27,11 @@ interface ContinentProps {
 }
 
 export default function Continent({ continent }: ContinentProps) {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  })
+
   return (
     <Box>
       <Header hasBackLink/>
@@ -36,7 +41,7 @@ export default function Continent({ continent }: ContinentProps) {
         bgPosition='center'
         bgRepeat='no-repeat'
         bgSize='cover'
-        height='500'
+        height={['150','500']}
       >
         <Box
           maxW='1240'
@@ -45,17 +50,30 @@ export default function Continent({ continent }: ContinentProps) {
           px={10}
           position='relative'
         >
-          <Heading 
-            as='h1'
-            fontWeight='600'
-            fontSize='5xl'
-            color='gray.50'
-            position='absolute'
-            bottom='60px'
-            textTransform='capitalize'
-          >
-            {continent.name}
-          </Heading>
+          {isWideVersion ? (
+            <Heading 
+              as='h1'
+              fontWeight='600'
+              fontSize='5xl'
+              color='gray.50'
+              position='absolute'
+              bottom='60px'
+              textTransform='capitalize'
+            >
+              {continent.name}
+            </Heading>
+          ) : (
+            <Center w='100%' h='100%'>
+              <Text
+                as='h1'
+                fontWeight='600'
+                fontSize='1.75rem'
+                color='gray.50'
+              >
+                {continent.name}
+              </Text>
+            </Center>
+          )}
         </Box>
       </Box>
 
@@ -63,44 +81,35 @@ export default function Continent({ continent }: ContinentProps) {
         maxW='1240'
         h='100%'
         mx='auto'
-        px={10}
+        px={['4', '10']}
       >
-        <Flex justify='space-between' align='center' my={20}>
-          <Text maxW='600' fontSize='2xl' lineHeight='9' textAlign='justify' fontWeight='400'>
+        <Flex 
+          direction={['column', 'row']}
+          justify={'space-between' }
+          align='center' 
+          mt={['6', '20']}
+          mb={['8', '20']}
+        >
+          <Text maxW='600' fontSize={['sm', '2xl']} lineHeight={['5','9']} textAlign='justify' fontWeight='400'>
             {continent.description}
           </Text>
 
-          <HStack spacing={10}>
-            <Flex direction='column' align='center' px={2}>
-              <Text as='span' fontSize='5xl' color='yellow.500' fontWeight='600'>
-                {continent.numberOfCountries}
-              </Text>
-              <Text fontSize='2xl' fontWeight='600'>países</Text>
-            </Flex>
+          <HStack spacing={10} mt={['4', '0']}>
+            <Info 
+              legend="países"
+              numberOf={continent.numberOfCountries}
+            />
 
-            <Flex direction='column' align='center' px={2}>
-              <Text as='span' fontSize='5xl' color='yellow.500' fontWeight='600'>
-                {continent.numberOfLanguages}
-              </Text>
-              <Text fontSize='2xl' fontWeight='600'>línguas</Text>
-            </Flex>
+            <Info 
+              legend="línguas"
+              numberOf={continent.numberOfLanguages}
+            />
 
-            <Flex direction='column' align='center' px={2}>
-              <Text as='span' fontSize='5xl' color='yellow.500' fontWeight='600'>
-                {continent.amountMostPopularCities}
-              </Text>
-              <Flex align='center'>
-                <Text fontSize='2xl' fontWeight='600'>
-                  cidades +100
-                </Text>
-
-                <Tooltip label="100 cidades mais visitadas do mundo" bg="gray.600" color="gray.50">
-                  <span>
-                    <Icon as={FiInfo} fontSize="md" opacity='0.5' ml='5px'/>
-                  </span>
-                </Tooltip>
-              </Flex>
-            </Flex>
+            <Info 
+              legend="cidades +100"
+              numberOf={continent.amountMostPopularCities}
+              hasTooltip={true}
+            />
           </HStack>
         </Flex>
       
@@ -108,13 +117,13 @@ export default function Continent({ continent }: ContinentProps) {
           <Heading
             as='h1'
             fontWeight='500'
-            fontSize='4xl'
+            fontSize={['2xl', '4xl']}
             color='gray.600'
           >
             Cidades +100
           </Heading>
 
-          <SimpleGrid columns={4} spacing={10} my='45px'>
+          <SimpleGrid columns={[1, 4]} spacing={[5, 10]} my={['5','45px']}>
             {continent.mostPopularCities.map((city) => (
               <Card
                 key={city.cityName}

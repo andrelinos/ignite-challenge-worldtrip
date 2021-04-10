@@ -4,12 +4,13 @@ import Link from 'next/link'
 interface SlideItemProps {
   title: string;
   description: string;
+  link: string;
   imageUrl: string;
 }
 
-export function SlideItem({ title, description, imageUrl }: SlideItemProps) {
+export function SlideItem({ title, description, link, imageUrl }: SlideItemProps) {
   return (
-    <Link href='/continents/europa'>
+    <Link href={`/continents/${link}`}>
       <a>
         <Flex
           w="100%"

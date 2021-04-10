@@ -10,7 +10,7 @@ interface CardProps {
 
 export function Card({ name, countryName, image, countryCode }: CardProps) {
   return (
-    <Box w='256'>
+    <Box w='256px' mx={['auto', '0']}>
       <Image borderTopRadius='4' src={image} alt='Londres' w='100%' h='173' objectFit='cover'/>
       <Flex 
         justify='space-between' 
