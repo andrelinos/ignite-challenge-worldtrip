@@ -1,4 +1,4 @@
-import { Center, Icon, Image, Link as ChakraLink} from "@chakra-ui/react";
+import { Center, Icon, Image, Link as ChakraLink, useBreakpointValue} from "@chakra-ui/react";
 import Link from 'next/link'
 import { FiChevronLeft } from "react-icons/fi";
 
@@ -7,8 +7,20 @@ interface HeaderProps {
 }
 
 export function Header({ hasBackLink = false }: HeaderProps) {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  })
+
   return (
-    <Center w='100%' h='100px' maxW='1240' mx='auto' px={10} position='relative'>
+    <Center 
+      w='100%' 
+      h={isWideVersion ? '100' : '50'} 
+      maxW={1240} 
+      mx='auto' 
+      px={10} 
+      position='relative'
+    >
       {hasBackLink && (
         <Link href='/'>
           <ChakraLink position='absolute' left='40px'>
@@ -17,7 +29,11 @@ export function Header({ hasBackLink = false }: HeaderProps) {
         </Link>
       )}
 
-      <Image src='/images/logo.svg' alt='World Trip'/>
+      <Image 
+        src='/images/logo.svg' 
+        alt='World Trip'
+        w={!isWideVersion && '81px'}
+      />
     </Center>
   )
 }
