@@ -1,8 +1,8 @@
 <h1> World Trip 🌎</h1>
 
 <p align="center"  > 
-  <img align='right' width='27.9%' src="https://user-images.githubusercontent.com/48728541/114254867-6855fd80-9988-11eb-930c-e57dc65f43f1.png" /> 
-  <img width='65%' src="https://user-images.githubusercontent.com/48728541/114254873-74da5600-9988-11eb-9811-507ea5642c51.png" />
+  <img align='right' width='28.8%' src="https://user-images.githubusercontent.com/48728541/114254867-6855fd80-9988-11eb-930c-e57dc65f43f1.png" /> 
+  <img width='66.2%' src="https://user-images.githubusercontent.com/48728541/114254873-74da5600-9988-11eb-9811-507ea5642c51.png" />
 </p>
 
 <p align="center"  > 
